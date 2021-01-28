@@ -18,7 +18,9 @@ const GameBoard = ({ onWin }) => {
     if (newEntires[row][col]) return;
     newEntires[row][col] = turn;
     setEntries(newEntires);
-    if (checkForWin(newEntires)) onWin(turn);
+    if (checkForWin(newEntires)) return onWin(turn);
+    if (newEntires.every((row) => row.every((col) => col !== "")))
+      return onWin(-1);
     const nextTurn = turn === "X" ? "O" : "X";
     setTurn(nextTurn);
   };

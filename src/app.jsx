@@ -12,6 +12,12 @@ const App = () => {
     <React.Fragment>
       {!isWon ? (
         <GameBoard onWin={setIsWon} />
+      ) : isWon === -1 ? (
+        <div className="gameWonStatus">
+          <div>😁</div>
+          <span>draw</span>
+          <button onClick={handleContinue}>Continue</button>
+        </div>
       ) : (
         <div className="gameWonStatus">
           <div>{isWon}</div>
