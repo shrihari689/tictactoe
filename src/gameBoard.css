@@ -1,0 +1,48 @@
+.gameBoard {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  background-color: beige;
+  min-height: 500px;
+  min-width: 500px;
+  margin-top: 15px;
+  border-radius: 5px;
+}
+.gameBoard div.computer {
+  color: #cf9d27;
+}
+.gameBoard div {
+  user-select: none;
+  height: 166px;
+  width: 166px;
+  font-size: 10em;
+  color: #082040;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gameBoard div:nth-child(1),
+.gameBoard div:nth-child(4) {
+  border-bottom: 5px solid #a62103;
+  border-right: 5px solid #a62103;
+}
+.gameBoard div:nth-child(7) {
+  border-right: 5px solid #a62103;
+}
+
+.gameBoard div:nth-child(2),
+.gameBoard div:nth-child(5) {
+  border-bottom: 5px solid #a62103;
+  border-right: 5px solid #a62103;
+}
+.gameBoard div:nth-child(8) {
+  border-right: 5px solid #a62103;
+}
+
+.gameBoard div:nth-child(3),
+.gameBoard div:nth-child(6) {
+  border-bottom: 5px solid #a62103;
+}
+.gameBoard div:nth-child(8) {
+  border-right: 5px solid #a62103;
+}
