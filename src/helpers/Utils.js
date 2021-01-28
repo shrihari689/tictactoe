@@ -47,7 +47,6 @@ const checkColumns = (entries) => {
 };
 
 const checkForWin = (entries) => {
-  console.log(entries);
   const diagonals = checkDiagonal(entries);
   if (diagonals) {
     return diagonals;

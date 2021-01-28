@@ -3,8 +3,9 @@ import Entry from "./Entry";
 import "../gameBoard.css";
 import "../app.css";
 import checkForWin from "./../helpers/Utils";
+import status from "./../helpers/Config";
 
-const GameBoard = ({ onWin }) => {
+const GameBoard = ({ onStatusChange }) => {
   const [entries, setEntries] = useState([
     ["", "", ""],
     ["", "", ""],
@@ -15,12 +16,22 @@ const GameBoard = ({ onWin }) => {
 
   const handleClick = (row, col) => {
     const newEntires = [...entries];
+    // Don't Update if already the place is filled
     if (newEntires[row][col]) return;
+
     newEntires[row][col] = turn;
     setEntries(newEntires);
-    if (checkForWin(newEntires)) return onWin(turn);
+
+    // Check for winning across all cells
+    if (checkForWin(newEntires)) {
+      const gameStatus = turn === "X" ? status.X_WON : status.O_WON;
+      return onStatusChange(gameStatus);
+    }
+
+    // If it's not won, then check all entries are filled up
     if (newEntires.every((row) => row.every((col) => col !== "")))
-      return onWin(-1);
+      return onStatusChange(status.DRAW);
+
     const nextTurn = turn === "X" ? "O" : "X";
     setTurn(nextTurn);
   };
